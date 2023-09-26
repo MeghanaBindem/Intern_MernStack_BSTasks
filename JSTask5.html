@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSTask5</title>
+    <style>
+      /* Add red border to input fields with errors */
+      input.error,
+      textarea.error {
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="contactForm">
+      <!-- Name Field -->
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+      <span id="nameError" style="color: red"></span><br /><br />
+
+      <!-- Email Field -->
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <span id="emailError" style="color: red"></span><br /><br />
+
+      <!-- Website Field -->
+      <label for="website">Website:</label>
+      <input type="url" id="website" required />
+      <span id="websiteError" style="color: red"></span><br /><br />
+
+      <!-- Message Field -->
+      <label for="message">Message:</label>
+      <textarea id="message" required></textarea>
+      <span id="messageError" style="color: red"></span><br /><br />
+
+      <!-- Submit Button -->
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      // Function to validate the form
+      function validateForm() {
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const websiteInput = document.getElementById("website");
+        const messageInput = document.getElementById("message");
+
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+        const websiteError = document.getElementById("websiteError");
+        const messageError = document.getElementById("messageError");
+
+        let valid = true;
+
+        if (nameInput.value.trim() === "") {
+          nameError.textContent = "This field is required";
+          valid = false;
+        } else {
+          nameError.textContent = "";
+        }
+
+        if (emailInput.value.trim() === "") {
+          emailError.textContent = "This field is required";
+          valid = false;
+        } else {
+          emailError.textContent = "";
+        }
+
+        if (websiteInput.value.trim() === "") {
+          websiteError.textContent = "This field is required";
+          valid = false;
+        } else {
+          websiteError.textContent = "";
+        }
+
+        if (messageInput.value.trim() === "") {
+          messageError.textContent = "This field is required";
+          valid = false;
+        } else {
+          messageError.textContent = "";
+        }
+
+        return valid;
+      }
+
+      // Attach the validation function to the form's submit event
+      const contactForm = document.getElementById("contactForm");
+      contactForm.addEventListener("submit", function (event) {
+        if (!validateForm()) {
+          event.preventDefault(); // Prevent form submission if validation fails
+        }
+      });
+    </script>
+  </body>
+</html>

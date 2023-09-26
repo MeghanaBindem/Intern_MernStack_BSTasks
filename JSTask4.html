@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JSTask4</title>
+  </head>
+  <body>
+    <!-- Date Button -->
+    <button onclick="showDate()">show date</button><br /><br />
+
+    <!-- Time Button -->
+    <button onclick="showTime()">show time</button><br /><br />
+
+    <!-- Display Area for Result -->
+    <p id="result"></p>
+
+    <script>
+      // Function to display the current date
+      function showDate() {
+        const currentDate = new Date();
+        const options = { day: "numeric", month: "long", year: "numeric" };
+        const dateString = currentDate.toLocaleDateString(undefined, options);
+        document.getElementById(
+          "result"
+        ).textContent = `Current Date is: ${dateString}`;
+      }
+
+      // Function to display the current time
+      function showTime() {
+        const currentTime = new Date();
+        const options = {
+          weekday: "short",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          timeZoneName: "short",
+        };
+        const timeString = currentTime.toLocaleTimeString(undefined, options);
+        document.getElementById(
+          "result"
+        ).textContent = `Current Time is: ${timeString}`;
+      }
+    </script>
+  </body>
+</html>
